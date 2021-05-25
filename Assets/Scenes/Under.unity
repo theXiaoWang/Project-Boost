@@ -367,10 +367,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Launch Pad
       objectReference: {fileID: 0}
-    - target: {fileID: 2537123963388627397, guid: b2e3d5a225d84b04e86d46c174bbf03a, type: 3}
-      propertyPath: m_TagString
-      value: Friendly
-      objectReference: {fileID: 0}
     - target: {fileID: 7227082006912719348, guid: b2e3d5a225d84b04e86d46c174bbf03a, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -432,10 +428,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Launch Pad (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 2537123963388627397, guid: b2e3d5a225d84b04e86d46c174bbf03a, type: 3}
-      propertyPath: m_TagString
-      value: Finish
-      objectReference: {fileID: 0}
     - target: {fileID: 7227082006912719348, guid: b2e3d5a225d84b04e86d46c174bbf03a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -496,7 +488,7 @@ PrefabInstance:
     - target: {fileID: 582512136108579567, guid: a55b12aedfe1e6d44934976e5a408fa8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 032b5356f23ee444da11269998a31c08, type: 2}
+      objectReference: {fileID: 2100000, guid: d4d24b50508f592448556d8e87400438, type: 2}
     - target: {fileID: 4092186173224636985, guid: a55b12aedfe1e6d44934976e5a408fa8, type: 3}
       propertyPath: m_Name
       value: Obstacle
@@ -515,7 +507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7923914136146261050, guid: a55b12aedfe1e6d44934976e5a408fa8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.6250005
+      value: 17.5
       objectReference: {fileID: 0}
     - target: {fileID: 7923914136146261050, guid: a55b12aedfe1e6d44934976e5a408fa8, type: 3}
       propertyPath: m_LocalPosition.z

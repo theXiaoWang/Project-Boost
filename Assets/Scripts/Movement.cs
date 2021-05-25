@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float mainThrust = 100f;
-    [SerializeField] private float rotationThrust = 1f;
-    private Rigidbody _rigidbody;
-    private AudioSource _audioSource;
+    [SerializeField] float mainThrust = 100f;
+    [SerializeField] float rotationThrust = 1f;
+    [SerializeField] AudioClip mainEngine;
+    Rigidbody _rigidbody;
+    AudioSource _audioSource;
    
     void Start()
     {
@@ -22,7 +23,7 @@ public class Movement : MonoBehaviour
         ProcessRotation();
     }
 
-    private void ProcessRotation()
+    void ProcessRotation()
     {
         if (Input.GetKey(KeyCode.A))
         {
@@ -34,21 +35,21 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void ApplyRotation(float rotationThisFrame)
+    void ApplyRotation(float rotationThisFrame)
     {
         _rigidbody.freezeRotation = true; //Disable system physics to control manually
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
         _rigidbody.freezeRotation = false; //Enable system physics
     }
 
-    private void ProcessThrust()
+    void ProcessThrust()
     {
         if (Input.GetKey(KeyCode.Space))
         {
             _rigidbody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
             if (!_audioSource.isPlaying)
             {
-                _audioSource.Play();
+                _audioSource.PlayOneShot(mainEngine);
             }
         }
         else

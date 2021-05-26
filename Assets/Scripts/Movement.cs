@@ -1,4 +1,4 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,9 +7,14 @@ public class Movement : MonoBehaviour
     [SerializeField] float mainThrust = 100f;
     [SerializeField] float rotationThrust = 1f;
     [SerializeField] AudioClip mainEngine;
+
+    [SerializeField] ParticleSystem mainBoosterParticles;
+    [SerializeField] ParticleSystem leftBoosterParticles;
+    [SerializeField] ParticleSystem rightBoosterParticles;
+
     Rigidbody _rigidbody;
     AudioSource _audioSource;
-   
+
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -19,6 +24,9 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // mainBoosterParticles.Stop();
+        // rightBoosterParticles.Stop();
+        // leftBoosterParticles.Stop();
         ProcessThrust();
         ProcessRotation();
     }
@@ -28,10 +36,23 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             ApplyRotation(rotationThrust);
-        }        
+            if (!rightBoosterParticles.isPlaying)
+            {
+                rightBoosterParticles.Play();
+            }
+        }
         else if (Input.GetKey(KeyCode.D))
         {
             ApplyRotation(-rotationThrust);
+            if (!leftBoosterParticles.isPlaying)
+            {
+                leftBoosterParticles.Play();
+            }
+        }
+        else
+        {
+            rightBoosterParticles.Stop();
+            leftBoosterParticles.Stop();
         }
     }
 
@@ -51,29 +72,16 @@ public class Movement : MonoBehaviour
             {
                 _audioSource.PlayOneShot(mainEngine);
             }
+
+            if (!mainBoosterParticles.isPlaying)
+            {
+                mainBoosterParticles.Play();
+            }
         }
         else
         {
             _audioSource.Stop();
+            mainBoosterParticles.Stop();
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

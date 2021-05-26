@@ -466,7 +466,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 56
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!114 &1088270244
 MonoBehaviour:
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainThrust: 750
   rotationThrust: 100
-  mainEngine: {fileID: 8300000, guid: b97ebc7cc4c517d41972f6e21c1ff892, type: 3}
+  mainEngineAudio: {fileID: 8300000, guid: b97ebc7cc4c517d41972f6e21c1ff892, type: 3}
   mainBoosterParticles: {fileID: 8824411305983558624}
   leftBoosterParticles: {fileID: 1961517451579321213}
   rightBoosterParticles: {fileID: 6856024976834216366}
@@ -498,9 +498,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc3b78578473d747ae78d0e3976818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLoadDelay: 1
-  success: {fileID: 8300000, guid: c36abd1709859554eb3655ad45404405, type: 3}
-  crash: {fileID: 8300000, guid: 3ab72155b1e20c14fb45078e7c19619a, type: 3}
+  levelLoadDelay: 2
+  successAudio: {fileID: 8300000, guid: c36abd1709859554eb3655ad45404405, type: 3}
+  crashAudio: {fileID: 8300000, guid: 3ab72155b1e20c14fb45078e7c19619a, type: 3}
   successParticles: {fileID: 7563302792333012017}
   crashParticles: {fileID: 5239319778312844273}
 --- !u!82 &708483660
@@ -514,7 +514,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.51
   m_Pitch: 1
   Loop: 1

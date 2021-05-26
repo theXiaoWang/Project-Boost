@@ -1,64 +1,66 @@
-using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float levelLoadDelay = 2f;
-    [SerializeField] AudioClip success;
-    [SerializeField] AudioClip crash;
+    
+    [SerializeField] AudioClip successAudio;
+    [SerializeField] AudioClip crashAudio;
     
     [SerializeField] ParticleSystem successParticles;
     [SerializeField] ParticleSystem crashParticles;
     
     AudioSource _audioSource;
     
-    bool isTransitioning = false;
+    bool _isTransitioning;
     
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
     }
 
-    void OnCollisionEnter(UnityEngine.Collision other)
+    //Entry of all collisions
+    void OnCollisionEnter(Collision other)
     {
-        if (isTransitioning)
+        if (_isTransitioning)
         {
             return;
         }
-        
         switch (other.gameObject.tag)
         {
             case "Friendly":
                 break;
             case "Finish":
-                StartSuccessSequence();
+                ProcessSuccessSequence();
                 break;
             default:
-                StartCrashSequence();
+                ProcessCrashSequence();
             break;
         }
     }
 
-    void StartSuccessSequence()
-    {        
-        isTransitioning = true;
-        _audioSource.Stop();
-        _audioSource.PlayOneShot(success);
-        successParticles.Play();
-        GetComponent<Movement>().enabled = false;
-        Invoke("LoadNextLevel", this.levelLoadDelay);
+    void ProcessSuccessSequence()
+    {
+        ApplySequence("LoadNextLevel", successParticles, successAudio, 1f);
     }
 
-    void StartCrashSequence()
+    void ProcessCrashSequence()
     {
-        isTransitioning = true;
+        ApplySequence("ReloadLevel", crashParticles, crashAudio, 0.2f);
+    }
+
+    void ApplySequence(string levelAction, ParticleSystem particle, AudioClip audioClip, float volume)
+    {
+        _isTransitioning = true;
+        particle.Play();
         _audioSource.Stop();
-        _audioSource.PlayOneShot(crash, 0.2f);
-        crashParticles.Play();
+        _audioSource.PlayOneShot(audioClip, volume);
+        //Deprive the control right of the player
         GetComponent<Movement>().enabled = false;
-        Invoke("ReloadLevel", this.levelLoadDelay);
-        
+        //Invoke is used to load a certain level, 2nd para is delay time
+        Invoke(levelAction, levelLoadDelay);
     }
 
     void LoadNextLevel()

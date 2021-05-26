@@ -349,13 +349,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.20622934, y: 0.00000019371507, z: -0.000000039115545, w: 0.9785037}
-  m_LocalPosition: {x: 5, y: 13, z: -19}
+  m_LocalRotation: {x: 0.062054306, y: 0.00000018598853, z: -0.0000000668118, w: 0.99807286}
+  m_LocalPosition: {x: 5.03, y: 11.68, z: -30.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 23.803, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.115, y: 0, z: 0}
 --- !u!1001 &1327095726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -558,6 +558,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1088270246, guid: 0fc19d78d1d010846b386188fab582d3, type: 3}
+      propertyPath: m_Constraints
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5838538589083096399, guid: 0fc19d78d1d010846b386188fab582d3, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -606,5 +610,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
+    - target: {fileID: 8749274798128326908, guid: 0fc19d78d1d010846b386188fab582d3, type: 3}
+      propertyPath: crashAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 3ab72155b1e20c14fb45078e7c19619a, type: 3}
+    - target: {fileID: 8749274798128326908, guid: 0fc19d78d1d010846b386188fab582d3, type: 3}
+      propertyPath: successAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: c36abd1709859554eb3655ad45404405, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fc19d78d1d010846b386188fab582d3, type: 3}

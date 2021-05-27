@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] float mainThrust = 100f;
     [SerializeField] float rotationThrust = 1f;
-    [SerializeField] float SuperBoostRate = 1.5f;
+    [SerializeField] float superBoostRate = 1.5f;
     
     //Audio file:
     [SerializeField] AudioClip mainEngineAudio;
@@ -19,8 +20,13 @@ public class Movement : MonoBehaviour
     //Audio listener(added in main camera) - audio source - audio file
     AudioSource _audioSource;
 
+    float _superBoostedForce;
+    float thrustAudioVolume = 0.5f;
+    bool _isSuperBoosted;
+
     void Start()
     {
+        _superBoostedForce = mainThrust * superBoostRate;
         _audioSource = GetComponent<AudioSource>();
         _rigidbody = GetComponent<Rigidbody>();
     }
@@ -36,14 +42,20 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            StartThrusting();
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                StartSuperBoosting();
+                return; 
+            }
+            StopSuperBoosting(); //Effective after super boosted is active, then disable it by assigning false
+            StartThrusting(mainThrust);
         }
         else
         {
             StopThrusting();
         }
     }
-    
+
     void ProcessRotation()
     {
         if (Input.GetKey(KeyCode.A))
@@ -60,47 +72,53 @@ public class Movement : MonoBehaviour
         }
     }
     
-    void StartThrusting()
+    void StartThrusting(float thrustForce)
     {
-        float tempThrust = mainThrust;
-        bool superBoosted = false;
+        _rigidbody.AddRelativeForce(Vector3.up * thrustForce * Time.deltaTime);
         
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            superBoosted = true;
-            tempThrust *= SuperBoostRate;
-            if (!superBoosterParticles.isPlaying)
-            {
-                mainBoosterParticles.Stop();
-                superBoosterParticles.Play();
-            }
-        }
-        else
-        {
-            superBoosterParticles.Stop();
-        }
-        _rigidbody.AddRelativeForce(Vector3.up * tempThrust * Time.deltaTime);
-        if (!_audioSource.isPlaying)
+        if (!_audioSource.isPlaying && !_isSuperBoosted)
         {
             //PlayOneShot method allows a specific audio chosen from many
-            _audioSource.PlayOneShot(mainEngineAudio);
+            _audioSource.PlayOneShot(mainEngineAudio, thrustAudioVolume);
         }
-
-        if (!mainBoosterParticles.isPlaying && !superBoosted)
+        if (!mainBoosterParticles.isPlaying && !_isSuperBoosted)
         {
             mainBoosterParticles.Play();
         }
     }
 
-    void applySuperBoost()
+    void StartSuperBoosting()
     {
-        
+        StopThrusting(); //Mute the normal thrust audio when super boosted is inactive(false), otherwise keep playing super boosted audio(true)
+        _isSuperBoosted = true;
+        StartThrusting(_superBoostedForce);
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.PlayOneShot(mainEngineAudio, thrustAudioVolume * 2);
+        }
+        if (!superBoosterParticles.isPlaying)
+        {
+            superBoosterParticles.Play();
+        }
     }
     
     private void StopThrusting()
     {
-        _audioSource.Stop();
+        if (!_isSuperBoosted)
+        {
+            _audioSource.Stop();
+        }
         mainBoosterParticles.Stop();
+    }
+    
+    void StopSuperBoosting()
+    {
+        if (_isSuperBoosted)
+        {
+            _audioSource.Stop();
+        }
+        _isSuperBoosted = false;
+        superBoosterParticles.Stop();
     }
     
     void RotateRight()

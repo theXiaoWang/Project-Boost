@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,16 +16,22 @@ public class CollisionHandler : MonoBehaviour
     AudioSource _audioSource;
     
     bool _isTransitioning;
+    bool _disableCollision;
     
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        _disableCollision = GetComponent<Cheat>().disableCollision;
+    }
+
     //Entry of all collisions
     void OnCollisionEnter(Collision other)
     {
-        if (_isTransitioning)
+        if (_isTransitioning || _disableCollision)
         {
             return;
         }
@@ -43,7 +50,7 @@ public class CollisionHandler : MonoBehaviour
 
     void ProcessSuccessSequence()
     {
-        ApplySequence("LoadNextLevel", successParticles, successAudio, 1f);
+        ApplySequence("LoadNextLevel", successParticles, successAudio, 0.2f);
     }
 
     void ProcessCrashSequence()

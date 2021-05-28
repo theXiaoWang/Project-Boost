@@ -53,6 +53,7 @@ public class Movement : MonoBehaviour
         else
         {
             StopThrusting();
+            StopSuperBoosting();
         }
     }
 

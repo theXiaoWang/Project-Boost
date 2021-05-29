@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955644481}
   m_LocalRotation: {x: 0.018923884, y: -0, z: -0, w: 0.99982095}
-  m_LocalPosition: {x: 0.016, y: -0.03, z: -0.692}
+  m_LocalPosition: {x: -0.017, y: -0.03, z: -0.692}
   m_LocalScale: {x: 0.11050511, y: 0.1105051, z: 0.1105051}
   m_Children: []
   m_Father: {fileID: 7993002963452092948}
@@ -108,9 +108,10 @@ GameObject:
   - component: {fileID: -4104168374873319772}
   - component: {fileID: 670580553323294528}
   - component: {fileID: 5068909783883719387}
+  - component: {fileID: 119352788531941324}
   m_Layer: 0
   m_Name: Sphere Dropper
-  m_TagString: Untagged
+  m_TagString: Sphere Dropper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,8 +191,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.99960554, y: 2.510711, z: 2.157236}
-  m_Center: {x: 0.00019654467, y: -0.7553591, z: -0.5786182}
+  m_Size: {x: 1.660613, y: 2.6439035, z: 2.157236}
+  m_Center: {x: -0.007830066, y: -0.8219554, z: -0.5786182}
 --- !u!135 &-4104168374873319772
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -233,3 +234,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d530e93a53f341741b3435ea8dd37a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &119352788531941324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993002963452092949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8fd105e279fec4aa1b1434a180f4a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: -3, y: 0, z: 0}
+  frequency: 0.5

@@ -9,6 +9,7 @@ public class DropperEventTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            GetComponent<Oscillator>().enabled = false;
             GetComponent<Rigidbody>().useGravity = true;
         }
     }

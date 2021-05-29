@@ -75,7 +75,7 @@ public class Movement : MonoBehaviour
     
     void StartThrusting(float thrustForce)
     {
-        _rigidbody.AddRelativeForce(Vector3.up * thrustForce * Time.deltaTime);
+        _rigidbody.AddRelativeForce(Vector3.up * (thrustForce * Time.deltaTime));
         
         if (!_audioSource.isPlaying && !_isSuperBoosted)
         {
@@ -150,7 +150,7 @@ public class Movement : MonoBehaviour
     {
         _rigidbody.freezeRotation = true; //Disable system physics to control manually
         //Time.deltaTime is used to be independent from Frame rate. High FPS has low deltaTime, low FPS has high deltaTime
-        transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
+        transform.Rotate(Vector3.forward * (rotationThisFrame * Time.deltaTime));
         _rigidbody.freezeRotation = false; //Enable system physics once manually control is about to over
     }
 }

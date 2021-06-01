@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/OverUnder.unity
-    guid: 8e9ccbf7cd76d9446946dbd8d6542356
+    path: Assets/Scenes/Main Menu.unity
+    guid: b034e6ffad652724d8d8f6aff1892fdd
+  - enabled: 1
+    path: Assets/Scenes/Over Under.unity
+    guid: 27f18d8ee595d2645a60a34179841426
+  - enabled: 1
+    path: Assets/Scenes/Chaser.unity
+    guid: b0b97bc6ed196054a8cad031b4a8c530
   - enabled: 1
     path: Assets/Scenes/Dropper.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Gaint Asteroid.unity
+    guid: 87efabecb6a300c4584bdd26d9841619
   m_configObjects: {}

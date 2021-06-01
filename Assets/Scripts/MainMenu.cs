@@ -1,14 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Schema;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private ParticleSystem boostParticle;
-
     [SerializeField] private float yValue;
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +20,6 @@ public class MainMenu : MonoBehaviour
 
     private void RocketPatrol()
     {
-        transform.Translate(0,yValue,0);
+        transform.Translate(0,yValue * Time.deltaTime,0);
     }
 }

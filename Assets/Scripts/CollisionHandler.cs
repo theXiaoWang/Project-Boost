@@ -25,7 +25,7 @@ public class CollisionHandler : MonoBehaviour
 
     private void Update()
     {
-        _disableCollision = GetComponent<Cheat>().disableCollision;
+        // _disableCollision = GetComponent<Cheat>().disableCollision;
     }
 
     //Entry of all collisions

@@ -368,7 +368,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 10
-  m_Range: 20
+  m_Range: 40
   m_SpotAngle: 51
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -603,9 +603,9 @@ GameObject:
   - component: {fileID: 1088270246}
   - component: {fileID: 1088270244}
   - component: {fileID: 8749274798128326908}
-  - component: {fileID: 853275660298677326}
   - component: {fileID: 708483660}
   - component: {fileID: 8458390024742402973}
+  - component: {fileID: 8988177752547079752}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Player
@@ -695,19 +695,6 @@ MonoBehaviour:
   crashAudio: {fileID: 8300000, guid: 3ab72155b1e20c14fb45078e7c19619a, type: 3}
   successParticles: {fileID: 7563302792333012017}
   crashParticles: {fileID: 5239319778312844273}
---- !u!114 &853275660298677326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7245355771417022198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 414726fb0d189ce46a1fde52a2694321, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disableCollision: 0
 --- !u!82 &708483660
 AudioSource:
   m_ObjectHideFlags: 0
@@ -817,6 +804,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6165161, y: 3.1284866, z: 1}
   m_Center: {x: -1.2512798, y: 0.17768955, z: 0}
+--- !u!114 &8988177752547079752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245355771417022198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577e09c2dbf7b8c44a2424967025740c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7456707254429443232
 GameObject:
   m_ObjectHideFlags: 0

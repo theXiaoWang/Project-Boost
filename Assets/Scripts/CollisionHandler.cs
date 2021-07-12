@@ -17,7 +17,7 @@ public class CollisionHandler : MonoBehaviour
     
     bool _isTransitioning;
     bool _disableCollision;
-    
+
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
